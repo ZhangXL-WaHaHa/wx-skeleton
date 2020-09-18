@@ -1,4 +1,4 @@
-# wx-mall
+# wx-skeleton
 
 微信小程序骨架屏组件
 
