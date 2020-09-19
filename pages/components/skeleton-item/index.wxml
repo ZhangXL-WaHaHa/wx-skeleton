@@ -1,0 +1,14 @@
+<!--pages/components/skeleton-item/index.wxml-->
+<!-- <skeleton 
+  catchtouchmove="noSlide" wx:if="{{showSkeleton}}"
+  loading="chiaroscuro" bind:finishSkeleton="finishSkeleton">
+</skeleton> -->
+
+<view class="menu-list skeleton-node" data-nodeType="frame">
+  <block wx:for="{{menuList}}" wx:key="*this">
+    <view class="menu-list-box">
+      <image src="{{menuInfo.icon}}" class="menu-list-image skeleton-node" data-nodeType="circle" />
+      <view class="menu-list-name skeleton-node" data-nodeType="rect">{{menuInfo.name}}</view>
+    </view>
+  </block>
+</view>

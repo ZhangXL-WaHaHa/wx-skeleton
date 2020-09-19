@@ -1,0 +1,21 @@
+/* pages/components/skeleton-item/index.wxss */
+.menu-list {
+  margin: 0 20rpx;
+  padding: 10rpx;
+  border: solid 2px lightgreen;
+}
+.menu-list-box {
+  display: inline-block;
+  margin-right: 10rpx;
+  padding: 40rpx;
+  text-align: center;
+}
+.menu-list-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.memu-list-name {
+  color: #333333;
+  font-size: 11pt;
+}

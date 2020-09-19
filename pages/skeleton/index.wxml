@@ -1,16 +1,15 @@
 <!--pages/skeleton/index.wxml-->
-<!-- 首页进来实现骨架屏 -->
 <skeleton 
-  catchtouchmove="noSlide" 
-  wx:if="{{showSkeleton}}" 
-  loading="chiaroscuro" 
-  bind:finishSkeleton="finishSkeleton"></skeleton>
-  
-<!-- 页面内容 -->
+  catchtouchmove="noSlide" wx:if="{{showSkeleton}}"
+  loading="chiaroscuro" bind:finishSkeleton="finishSkeleton">
+</skeleton>
+
 <view class="skeleton">
   <image data-nodeType="rect" class="bg-image skeleton-node" src="{{bgImage}}"></image>
 
-  <block wx:for="{{menuList}}" wx:key="name">
-    <view class=""></view>
-  </block>
+  <skeleton-item showDuration="2000" menuList="{{[1,1,1,1]}}" />
+
+  <!-- <view class="mt-60">
+    <skeleton-item showDuration="3000" menuList="{{[1,1,1,1,1,1,1,1]}}"/>
+  </view> -->
 </view>

@@ -1,2 +1,2 @@
 <!--index.wxml-->
-<view class="viewSkeleton">点击跳转到骨架屏界面</view>
+<view bindtap="skipSkeleton">点击跳转到骨架屏界面</view>

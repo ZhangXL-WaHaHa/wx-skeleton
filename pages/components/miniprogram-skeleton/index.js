@@ -59,8 +59,7 @@ Component({
     // await this.rectHandle();
 
     // //绘制圆形
-    // // 目前项目里面没有使用到圆形，减少消耗
-    // // await this.radiusHandle();
+    // await this.radiusHandle();
 
     // // 绘制线条边框
     // await this.frameHandle()

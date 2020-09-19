@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "skeleton": "../components/miniprogram-skeleton/index"
+    "skeleton": "../components/miniprogram-skeleton/index",
+
+    "skeleton-item": "../components/skeleton-item/index"
   }
 }

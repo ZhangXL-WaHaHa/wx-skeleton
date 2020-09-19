@@ -1,30 +1,29 @@
 <!--pages/components/miniprogram-skeleton/index.wxml-->
 <!-- 使用方法：在需要显示骨架屏的页面引入该组件，并且在页面根节点增加class为skeleton -->
 <!-- 在需要渲染为骨架屏的节点上增加class为skeleton-node，且设置data-nodeType值 -->
-<!-- data-nodeType取值：rect <==> 矩形    frame <==> 线条边框;    lightColorRect <==> 浅颜色矩形边框; circle <==> 圆形框 -->
+<!-- data-nodeType取值：rect <==> 矩形    frame <==> 线条边框;    lightColorRect <==> 浅颜色矩形边框; circle <==> 圆形框   (可自行其他样式节点)-->
 
 <!-- Tip: 该方法需要设置初始化的值，将页面撑开之后才能获取到节点的位置以及宽高等相关信息 -->
 <!-- Tip: 原先的方法是在节点上设置不同类型的class值，但是节点类型多的话，需要经过几次的createSelectorQuery方法才能渲染，这会导致在低端机上会慢几百毫秒才出现骨架屏，用户体验不是很好，所以改成直接获取同一类型的节点，不同的节点设置不同的data-nodeType值区别-->
 
+<!-- Todo: 尝试组件化骨架屏，实现谁先加载完成谁先消失 -->
 <view
       style="width: {{systemInfo.width}}px; height: {{systemInfo.height}}px; background-color: {{bgcolor}}; position: absolute; left:0; top:0; z-index:9998; overflow: hidden;">
 
       <!-- 遍历素所有的骨架屏节点 -->
       <block wx:for="{{allSkeletonLists}}" wx:key="{{index}}">
             <!-- 绘制矩形 -->
-            <!-- 透明度改变的动画会显示出节点的覆盖关系，在每个节点上增加白色板块会延长骨架屏的渲染 -->
-            <!-- 目前的动画是每个节点进行透明度改变的动画，在整个页面的上层设置一个透明度改变的透明板实现动画 -->
-            <!-- <view 
-                  wx:if="{{item.dataset.nodetype === 'rect'}}" 
-                  style="width: {{item.dataset.sWidth || item.width}}{{unit}}; height: {{item.dataset.sHeight || item.height}}{{unit}}; background-color: white; position: absolute; left: {{item.left}}px; top: {{item.top}}px;">
-            </view> -->
-            <view 
-                  wx:if="{{item.dataset.nodetype === 'rect'}}" 
+            <view wx:if="{{item.dataset.nodetype === 'rect'}}"
                   style="width: {{item.dataset.sWidth || item.width}}{{unit}}; height: {{item.dataset.sHeight || item.height}}{{unit}}; background-color: #D3D3D3; position: absolute; left: {{item.left}}px; top: {{item.top}}px;">
             </view>
             <!-- 绘制线条边框 -->
             <view wx:if="{{item.dataset.nodetype === 'frame'}}"
                   style="width: {{item.dataset.sWidth || item.width}}{{unit}}; height: {{item.dataset.sHeight || item.height}}{{unit}};border:solid 2px rgba(211, 211, 211, 0.7);background-color: transparent;position: absolute; left: {{item.left}}px; top: {{item.top}}px">
+            </view>
+            <!-- 绘制圆形框样式 -->
+            <view wx:if="{{ item.dataset.nodetype === 'circle'}}"
+                  style="width: {{item.width}}{{unit}}; height: {{item.height}}{{unit}}; background-color: #D3D3D3; border-radius: {{item.width}}{{unit}}; position: absolute; left: {{item.left}}px; top: {{item.top}}px">
+
             </view>
             <!-- 绘制浅颜色矩形边框 -->
             <view wx:if="{{ item.dataset.nodetype === 'lightColorRect' }}"
@@ -65,7 +64,6 @@
 </view>
 
 <!-- 透明动画实现 -->
-<view 
-      class="transparent-mask {{loading == 'chiaroscuro' ? 'chiaroscuro' : ''}}" 
+<view class="transparent-mask {{loading == 'chiaroscuro' ? 'chiaroscuro' : ''}}"
       style="width: {{systemInfo.width}}px; height: {{systemInfo.height}}px;">
 </view>

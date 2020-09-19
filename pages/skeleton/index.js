@@ -8,44 +8,18 @@ Page({
     showSkeleton: true,  //是否显示骨架屏
 
     bgImage: 'https://hbimg.huabanimg.com/628753ae20d56bf9720878cb41805d625e38f4c7100f34-TXSo7u_fw658/format/webp', 
-
-    menuList: [
-      {
-        name: '美食',
-        icon: '../assets/image/icon-moments.png'
-      },
-      {
-        name: '旅游',
-        icon: '../assets/image/icon-moments.png'
-      },
-      {
-        name: '水果',
-        icon: '../assets/image/icon-moments.png'
-      },
-      {
-        name: '蔬菜',
-        icon: '../assets/image/icon-moments.png'
-      },
-      {
-        name: '奶茶',
-        icon: '../assets/image/icon-moments.png'
-      },
-      {
-        name: '汉堡',
-        icon: '../assets/image/icon-moments.png'
-      },
-      {
-        name: '披萨',
-        icon: '../assets/image/icon-moments.png'
-      }
-    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 设置3秒后骨架屏消失
+    setTimeout(() => {
+      this.setData({
+        showSkeleton: false
+      })
+    }, 3000)
   },
 
   /**
